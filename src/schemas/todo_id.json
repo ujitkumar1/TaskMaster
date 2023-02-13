@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Todo ID",
+  "properties": {
+    "todo_id": {
+      "title": "todo_id",
+      "description": "The todo_id",
+      "type": "integer",
+      "minLength": 1,
+      "pattern": "\\b\\d+\\b\n",
+      "examples": [
+        1
+      ]
+    }
+  },
+  "required": [
+    "todo_id"
+  ],
+  "additionalProperties": false
+}

@@ -11,6 +11,13 @@ from src import db
 
 class TodoCreate(Resource):
     def post(self):
+        """
+            This method creates a new to-do item and returns a JSON response with the saved data.
+            Args:
+
+            Returns:
+                Response: A Successful Flask response object with the created to-do item's data and id.
+        """
         request_json = validateJson(request, "todo_item.json")
 
         # Checking whether the request_json is an instance of dict data type or not

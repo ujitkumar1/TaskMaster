@@ -10,6 +10,14 @@ from src import db
 
 class Todo(Resource):
     def get(self, todo_id):
+        """
+            This method retrieves a single to-do item based on its id and returns a JSON response with the to-do item
+            or an error message if the item is not found.
+            Args:
+                todo_id (int): The id of the to-do item to retrieve.
+            Returns:
+                Response: A Flask response object with a JSON representation of the to-do item or an error message.
+        """
         item = TODO.query.filter_by(id=todo_id).first()
 
         if item:
@@ -31,6 +39,14 @@ class Todo(Resource):
         )
 
     def delete(self, todo_id):
+        """
+            This method deletes a single to-do item based on its id and returns a JSON response
+            or an error message if the item is not found.
+            Args:
+                todo_id (int): The id of the to-do item to delete.
+            Returns:
+                Response: A Successful Flask response object if todo deleted successfully else an error message.
+        """
         item = TODO.query.filter_by(id=todo_id).first()
 
         if item:
@@ -52,6 +68,14 @@ class Todo(Resource):
         )
 
     def put(self, todo_id):
+        """
+            This method updates a single to-do item based on its id and returns a JSON response
+            or an error message if the item is not found.
+            Args:
+                todo_id (int): The id of the to-do item to be updated.
+            Returns:
+                Response: A Successful Flask response object if todo updated successfully else an error message.
+        """
         request_json = validateJson(request, "todo_item.json")
 
         # Checking whether the request_json is an instance of dict data type or not
