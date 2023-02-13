@@ -6,15 +6,7 @@ from jsonschema import validate
 
 from log import log
 
-script_dir = os.path.dirname(__file__)
-rel_path = "json_schema.json"
-abs_file_path = os.path.join(script_dir, rel_path)
-
-with open(abs_file_path, "r") as f:
-    schema = json.load(f)
-
-
-def validateJson(jsonData):
+def validateJson(jsonData,filename):
     """
         This function validates the input JSON data.
         The data is first decoded from bytes to a string and loaded into a Python object using the `json` module.
@@ -24,6 +16,12 @@ def validateJson(jsonData):
         Returns:
             If the data is valid, returns the loaded Python object. If the data is invalid, returns a string error message.
     """
+    script_dir = os.path.dirname(__file__)
+    rel_path = "schemas/"+filename
+    abs_file_path = os.path.join(script_dir, rel_path)
+
+    with open(abs_file_path, "r") as f:
+        schema = json.load(f)
     try:
         # loading the request
         jsonData = jsonData.get_data().decode("utf-8")

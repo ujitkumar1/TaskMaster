@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Todo Status",
+  "properties": {
+    "todo_status": {
+      "title": "todo_item",
+      "description": "Status to the todo (Incomplete(False) or Complete(True)",
+      "type": "boolean",
+      "examples": [
+        true
+      ]
+    }
+  },
+  "required": [
+    "todo_status"
+  ],
+  "additionalProperties": false
+}

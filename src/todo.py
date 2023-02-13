@@ -52,7 +52,7 @@ class Todo(Resource):
         )
 
     def put(self, todo_id):
-        request_json = validateJson(request)
+        request_json = validateJson(request,"todo_item.json")
 
         # Checking whether the request_json is an instance of dict data type or not
         if not isinstance(request_json, dict):
