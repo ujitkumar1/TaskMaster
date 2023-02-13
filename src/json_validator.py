@@ -6,7 +6,8 @@ from jsonschema import validate
 
 from log import log
 
-def validateJson(jsonData,filename):
+
+def validateJson(jsonData, filename):
     """
         This function validates the input JSON data.
         The data is first decoded from bytes to a string and loaded into a Python object using the `json` module.
@@ -17,7 +18,7 @@ def validateJson(jsonData,filename):
             If the data is valid, returns the loaded Python object. If the data is invalid, returns a string error message.
     """
     script_dir = os.path.dirname(__file__)
-    rel_path = "schemas/"+filename
+    rel_path = "schemas/" + filename
     abs_file_path = os.path.join(script_dir, rel_path)
 
     with open(abs_file_path, "r") as f:

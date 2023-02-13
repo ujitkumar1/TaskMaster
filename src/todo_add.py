@@ -11,7 +11,7 @@ from src import db
 
 class TodoCreate(Resource):
     def post(self):
-        request_json = validateJson(request,"todo_item.json")
+        request_json = validateJson(request, "todo_item.json")
 
         # Checking whether the request_json is an instance of dict data type or not
         if not isinstance(request_json, dict):

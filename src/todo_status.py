@@ -9,8 +9,8 @@ from src import db
 
 
 class TodoStatus(Resource):
-    def put(self,todo_id):
-        request_json = validateJson(request,"todo_status.json")
+    def put(self, todo_id):
+        request_json = validateJson(request, "todo_status.json")
 
         if not isinstance(request_json, dict):
             return Response(
