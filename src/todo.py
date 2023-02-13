@@ -2,13 +2,15 @@ import json
 
 from flask import request, Response
 from flask_restful import Resource
-from models.models import TODO
+
 from json_validator import validateJson
+from models.models import TODO
 from src import db
 
+
 class Todo(Resource):
-    def get(self,todo_id):
-        item = TODO.query.filter_by(id = todo_id).first()
+    def get(self, todo_id):
+        item = TODO.query.filter_by(id=todo_id).first()
 
         if item:
             message = "The todo with id: " + str(todo_id) + ", is '" + item.todo_item + "'"
@@ -28,7 +30,7 @@ class Todo(Resource):
             content_type="application/json"
         )
 
-    def delete(self,todo_id):
+    def delete(self, todo_id):
         item = TODO.query.filter_by(id=todo_id).first()
 
         if item:
@@ -49,7 +51,7 @@ class Todo(Resource):
             content_type="application/json"
         )
 
-    def put(self,todo_id):
+    def put(self, todo_id):
         request_json = validateJson(request)
 
         # Checking whether the request_json is an instance of dict data type or not

@@ -2,10 +2,12 @@ import json
 
 from flask import Response, request
 from flask_restful import Resource
-from models.models import TODO
+
 from json_validator import validateJson
 from log import log
+from models.models import TODO
 from src import db
+
 
 class TodoCreate(Resource):
     def post(self):
@@ -24,7 +26,7 @@ class TodoCreate(Resource):
         db.session.add(item)
         db.session.commit()
 
-        data = ("TODO Item Saved:"+request_json["todo_item"] + "with todo_id: "+str(item.id))
+        data = ("TODO Item Saved:" + request_json["todo_item"] + "with todo_id: " + str(item.id))
         log.info(data)
 
         return Response(
