@@ -16,11 +16,18 @@ tasks, all through a flexible and easy-to-integrate API.
 4. flask_restful
 5. json
 
-### Installation:
+### Usage:
 
-To install the required packages and libraries, run the following command in your current working directory:
+__Without Docker__
 
-command
+First change the directory to TaskMaster by executing the below command in the terminal
+
+```
+cd TaskMaster
+```
+
+To install the required packages and libraries, run the following command:
+
 
 ```
 pip install -r requirements.txt
@@ -29,11 +36,7 @@ pip install -r requirements.txt
 This command will install all the necessary dependencies listed in the requirements.txt file, allowing you to run the
 project without any issues.
 
-### Usage:
-
 To run the application, execute the following command
-
-Command
 
 ```
 python main.py
@@ -41,7 +44,18 @@ python main.py
 
 This will start the application, and you should be able to use it. (or) Directly run the main.py file
 
-Endpoint Working:
+
+__With Docker__
+
+run the below commands in the terminal to run the app using the docker
+
+```
+cd TaskMaster
+docker build -t taskmaster -f Dockerfile/ .
+docker run -p 5000:5000 taskmaster
+```
+
+### Endpoint Working:
 
 CRUD Operations on TODO Items
 
