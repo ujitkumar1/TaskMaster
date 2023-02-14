@@ -6,7 +6,7 @@ from flask_restful import Resource
 from json_validator import validateJson
 from models.models import TODO
 from src import db
-
+from logger import log
 
 class Todo(Resource):
     def get(self, todo_id):
@@ -20,9 +20,11 @@ class Todo(Resource):
         """
 
         if not isinstance(todo_id, int):
+            error_msg = "Todo Id not in correct format"
+            log.error(error_msg)
             return Response(
                 status=400,
-                response=json.dumps("Todo Id not in correct format"),
+                response=json.dumps(error_msg),
                 content_type="application/json"
             )
 
@@ -34,12 +36,14 @@ class Todo(Resource):
                 message += " and it's incomplete"
             else:
                 message += " and it's completed"
+            log.info(message)
             return Response(
                 status=200,
                 response=json.dumps(message),
                 content_type="application/json"
             )
 
+        log.error("Todo Item not found with the given ID")
         return Response(
             status=403,
             response=json.dumps("Todo Item not found with the given ID"),
@@ -57,6 +61,7 @@ class Todo(Resource):
         """
 
         if not isinstance(todo_id, int):
+            log.error("Todo Id not in correct format")
             return Response(
                 status=400,
                 response=json.dumps("Todo Id not in correct format"),
@@ -70,13 +75,14 @@ class Todo(Resource):
             db.session.commit()
 
             message = "The todo with id: " + str(todo_id) + ", is '" + item.todo_item + "' is deleted successfully"
-
+            log.info(message)
             return Response(
                 status=200,
                 response=json.dumps(message),
                 content_type="application/json"
             )
 
+        log.error("Todo Item not found with the given ID")
         return Response(
             status=403,
             response=json.dumps("Todo Item not found with the given ID"),
@@ -96,6 +102,7 @@ class Todo(Resource):
 
         # Checking whether the request_json is an instance of dict data type or not
         if not isinstance(request_json, dict):
+            log.error(str(request_json))
             return Response(
                 status=400,
                 response=json.dumps(request_json),
@@ -103,6 +110,7 @@ class Todo(Resource):
             )
 
         if not isinstance(todo_id, int):
+            log.error("Todo Id not in correct format")
             return Response(
                 status=400,
                 response=json.dumps("Todo Id not in correct format"),
@@ -117,13 +125,14 @@ class Todo(Resource):
             db.session.commit()
 
             message = "The todo with id: " + str(item.id) + ", is updated to'" + item.todo_item + "'"
-
+            log.info(message)
             return Response(
                 status=200,
                 response=json.dumps(message),
                 content_type="application/json"
             )
 
+        log.error("Todo Item not found with the given ID")
         return Response(
             status=403,
             response=json.dumps("Todo Item not found with the given ID"),

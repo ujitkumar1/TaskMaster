@@ -4,7 +4,7 @@ import os
 import jsonschema
 from jsonschema import validate
 
-from log import log
+from logger import log
 
 
 def validateJson(jsonData, filename):

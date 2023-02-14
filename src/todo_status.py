@@ -6,7 +6,7 @@ from flask_restful import Resource
 from json_validator import validateJson
 from models.models import TODO
 from src import db
-
+from logger import log
 
 class TodoStatus(Resource):
     def put(self, todo_id):
@@ -22,6 +22,7 @@ class TodoStatus(Resource):
         request_json = validateJson(request, "todo_status.json")
 
         if not isinstance(request_json, dict):
+            log.error(str(request_json))
             return Response(
                 status=400,
                 response=json.dumps(request_json),
@@ -29,6 +30,7 @@ class TodoStatus(Resource):
             )
 
         if not isinstance(todo_id, int):
+            log.error("Todo Id not in correct format")
             return Response(
                 status=400,
                 response=json.dumps("Todo Id not in correct format"),
@@ -43,13 +45,14 @@ class TodoStatus(Resource):
             db.session.commit()
 
             message = "The todo with id: " + str(item.id) + ", status updated to'" + str(item.status) + "'"
-
+            log.info(message)
             return Response(
                 status=200,
                 response=json.dumps(message),
                 content_type="application/json"
             )
 
+        log.info("Todo Item not found with the given ID")
         return Response(
             status=403,
             response=json.dumps("Todo Item not found with the given ID"),

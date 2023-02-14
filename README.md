@@ -31,12 +31,12 @@ project without any issues.
 
 ### Usage:
 
-To run the application, execute the following command in the src directory
+To run the application, execute the following command
 
 Command
 
 ```
-python main.py
+python src/main.py
 ```
 
 This will start the application, and you should be able to use it. (or) Directly run the main.py file
