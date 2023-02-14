@@ -4,9 +4,10 @@ from flask import request, Response
 from flask_restful import Resource
 
 from json_validator import validateJson
+from logger import log
 from models.models import TODO
 from src import db
-from logger import log
+
 
 class TodoStatus(Resource):
     def put(self, todo_id):
@@ -19,6 +20,7 @@ class TodoStatus(Resource):
                 Response: A Successful Flask response object if the status was updated successfully,
                 else an error message.
         """
+        # Validating the JSON Request with todo_status.json
         request_json = validateJson(request, "todo_status.json")
 
         if not isinstance(request_json, dict):
@@ -29,6 +31,7 @@ class TodoStatus(Resource):
                 content_type="application/json"
             )
 
+        # Checking if todo_id is in correct format or not
         if not isinstance(todo_id, int):
             log.error("Todo Id not in correct format")
             return Response(
@@ -37,9 +40,11 @@ class TodoStatus(Resource):
                 content_type="application/json"
             )
 
+        # Fetching the todo from the database
         item = TODO.query.filter_by(id=todo_id).first()
 
         if item:
+            # Updating the status of the todo
             todo_status = request_json["todo_status"]
             item.status = todo_status
             db.session.commit()

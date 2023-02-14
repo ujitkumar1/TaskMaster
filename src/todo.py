@@ -4,9 +4,10 @@ from flask import request, Response
 from flask_restful import Resource
 
 from json_validator import validateJson
+from logger import log
 from models.models import TODO
 from src import db
-from logger import log
+
 
 class Todo(Resource):
     def get(self, todo_id):
@@ -19,6 +20,7 @@ class Todo(Resource):
                 Response: A Flask response object with a JSON representation of the to-do item or an error message.
         """
 
+        # Checking if todo_id is in correct format or not
         if not isinstance(todo_id, int):
             error_msg = "Todo Id not in correct format"
             log.error(error_msg)
@@ -28,6 +30,7 @@ class Todo(Resource):
                 content_type="application/json"
             )
 
+        # Fetching the todo from the database
         item = TODO.query.filter_by(id=todo_id).first()
 
         if item:
@@ -60,6 +63,7 @@ class Todo(Resource):
                 Response: A Successful Flask response object if todo deleted successfully else an error message.
         """
 
+        # Checking if todo_id is in correct format or not
         if not isinstance(todo_id, int):
             log.error("Todo Id not in correct format")
             return Response(
@@ -67,7 +71,7 @@ class Todo(Resource):
                 response=json.dumps("Todo Id not in correct format"),
                 content_type="application/json"
             )
-
+        # Fetching the todo from the database
         item = TODO.query.filter_by(id=todo_id).first()
 
         if item:
@@ -109,6 +113,7 @@ class Todo(Resource):
                 content_type="application/json"
             )
 
+        # Checking if todo_id is in correct format or not
         if not isinstance(todo_id, int):
             log.error("Todo Id not in correct format")
             return Response(
@@ -117,6 +122,7 @@ class Todo(Resource):
                 content_type="application/json"
             )
 
+        # Fetching the todo from the database
         item = TODO.query.filter_by(id=todo_id).first()
 
         if item:

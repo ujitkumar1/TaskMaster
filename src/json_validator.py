@@ -22,6 +22,7 @@ def validateJson(jsonData, filename):
     rel_path = "schemas/" + filename
     abs_file_path = os.path.join(script_dir, rel_path)
 
+    # Reading the JSON file
     with open(abs_file_path, "r") as f:
         schema = json.load(f)
     try:
