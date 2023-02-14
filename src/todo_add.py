@@ -3,9 +3,9 @@ import json
 from flask import Response, request
 from flask_restful import Resource
 
-from json_validator import validateJson
-from logger import log
-from models.models import TODO
+from src.json_validator import validateJson
+from src.logger import log
+from src.models.models import TODO
 from src import db
 
 

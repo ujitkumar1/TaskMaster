@@ -1,7 +1,7 @@
 from src import app, api
-from todo import Todo
-from todo_add import TodoCreate
-from todo_status import TodoStatus
+from src.todo import Todo
+from src.todo_add import TodoCreate
+from src.todo_status import TodoStatus
 
 """
 Main module to run the Flask RESTful API.
