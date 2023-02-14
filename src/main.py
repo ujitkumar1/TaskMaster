@@ -1,4 +1,4 @@
-from src import app, api, db
+from src import app, api
 from todo import Todo
 from todo_add import TodoCreate
 from todo_status import TodoStatus

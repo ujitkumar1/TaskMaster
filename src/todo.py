@@ -18,6 +18,14 @@ class Todo(Resource):
             Returns:
                 Response: A Flask response object with a JSON representation of the to-do item or an error message.
         """
+
+        if not isinstance(todo_id, int):
+            return Response(
+                status=400,
+                response=json.dumps("Todo Id not in correct format"),
+                content_type="application/json"
+            )
+
         item = TODO.query.filter_by(id=todo_id).first()
 
         if item:
@@ -47,6 +55,14 @@ class Todo(Resource):
             Returns:
                 Response: A Successful Flask response object if todo deleted successfully else an error message.
         """
+
+        if not isinstance(todo_id, int):
+            return Response(
+                status=400,
+                response=json.dumps("Todo Id not in correct format"),
+                content_type="application/json"
+            )
+
         item = TODO.query.filter_by(id=todo_id).first()
 
         if item:
@@ -83,6 +99,13 @@ class Todo(Resource):
             return Response(
                 status=400,
                 response=json.dumps(request_json),
+                content_type="application/json"
+            )
+
+        if not isinstance(todo_id, int):
+            return Response(
+                status=400,
+                response=json.dumps("Todo Id not in correct format"),
                 content_type="application/json"
             )
 

@@ -14,6 +14,7 @@ def validateJson(jsonData, filename):
         The loaded data is then validated against a predefined JSON schema using the `jsonschema` library.
         Args:
             jsonData: The JSON data to be validated.
+            filename: The JSON file in which the schemas are defined
         Returns:
             If the data is valid, returns the loaded Python object. If the data is invalid, returns a string error message.
     """

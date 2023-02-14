@@ -28,6 +28,13 @@ class TodoStatus(Resource):
                 content_type="application/json"
             )
 
+        if not isinstance(todo_id, int):
+            return Response(
+                status=400,
+                response=json.dumps("Todo Id not in correct format"),
+                content_type="application/json"
+            )
+
         item = TODO.query.filter_by(id=todo_id).first()
 
         if item:
