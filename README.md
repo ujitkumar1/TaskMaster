@@ -74,6 +74,7 @@ CRUD Operations on TODO Items
    url : http://127.0.0.1:5000/todo/1 (GET Request)
    
    Here the url is in the format of "http://127.0.0.1:5000/todo/<int:todo_id>"
+
    Output --> "The todo with id: 1, is 'Bring Vegetables from market' and it's incomplete"
 
 
@@ -82,6 +83,7 @@ CRUD Operations on TODO Items
    url : http://127.0.0.1:5000/todo/1 (DELETE Request)
    
    Here the url is in the format of "http://127.0.0.1:5000/todo/<int:todo_id>"
+
    Output --> "The todo with id: 2, is 'Bring Vegetables from market' is deleted successfully"
 
 
@@ -90,6 +92,7 @@ CRUD Operations on TODO Items
    url : http://127.0.0.1:5000/todo/1 (PUT Request)
    
    Here the url is in the format of "http://127.0.0.1:5000/todo/<int:todo_id>"
+
    Input --> json_data = {"todo_item" : "Bring Potatoes from market"}
 
    Output --> "The todo with id: 1, is updated to 'Bring Potatoes from market'"
@@ -100,6 +103,7 @@ CRUD Operations on TODO Items
    url : http://127.0.0.1:5000/todo/status/1 (PUT Request)
    
    Here the url is in the format of "http://127.0.0.1:5000/todo/status/<int:todo_id>"
+
    Input --> json_data = {"todo_status":true }
 
    Output --> "The todo with id: 1, status updated to'True'"
