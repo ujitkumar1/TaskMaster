@@ -15,6 +15,7 @@ tasks, all through a flexible and easy-to-integrate API.
 3. flask
 4. flask_restful
 5. json
+6. Docker (Optional)
 
 ### Usage:
 
@@ -71,21 +72,24 @@ CRUD Operations on TODO Items
 2. To View a todo item
 
    url : http://127.0.0.1:5000/todo/1 (GET Request)
-
+   
+   Here the url is in the format of "http://127.0.0.1:5000/todo/<int:todo_id>"
    Output --> "The todo with id: 1, is 'Bring Vegetables from market' and it's incomplete"
 
 
 3. To Delete a todo item
 
    url : http://127.0.0.1:5000/todo/1 (DELETE Request)
-
+   
+   Here the url is in the format of "http://127.0.0.1:5000/todo/<int:todo_id>"
    Output --> "The todo with id: 2, is 'Bring Vegetables from market' is deleted successfully"
 
 
 4. To Update a todo item
 
    url : http://127.0.0.1:5000/todo/1 (PUT Request)
-
+   
+   Here the url is in the format of "http://127.0.0.1:5000/todo/<int:todo_id>"
    Input --> json_data = {"todo_item" : "Bring Potatoes from market"}
 
    Output --> "The todo with id: 1, is updated to 'Bring Potatoes from market'"
@@ -94,7 +98,8 @@ CRUD Operations on TODO Items
 5. To Update the Status of Todo Item:
 
    url : http://127.0.0.1:5000/todo/status/1 (PUT Request)
-
+   
+   Here the url is in the format of "http://127.0.0.1:5000/todo/status/<int:todo_id>"
    Input --> json_data = {"todo_status":true }
 
    Output --> "The todo with id: 1, status updated to'True'"
